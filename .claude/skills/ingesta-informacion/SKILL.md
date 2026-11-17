@@ -57,6 +57,8 @@ Si no hay Python o `uv` y no se pueden instalar, lee el PDF directamente y pása
 
 El script deja también `<archivo>.md.raw.txt` con el texto plano original, que se usa en la verificación. Imprime cuántos H1 y H2 detecta: cada H1 es un capítulo y cada H2 una sección.
 
+Si el script informa de 0 H1 y 0 H2 pero el `.md` tiene títulos en niveles más bajos (`###` a `######`, típico de PDFs con diseño), sube todos los niveles a la vez, sin revisarlos uno a uno: el nivel más alto que aparezca pasa a `#`, el siguiente a `##`, y así sucesivamente. Por ejemplo, si hay `###` y `####`, `###` pasa a `#` y `####` a `##`. Si solo hay un nivel de títulos, pasa a `##`: el documento entero es un capítulo y cada título, una sección.
+
 Revisa el resultado antes de seguir: lee el principio de cada capítulo y alguna tabla. Si los encabezados no salen como `#` / `##` (por ejemplo, el PDF no tiene marcas de capítulo), arréglalos en el `.md` temporal para que cada bloque temático sea un H1 y cada apartado un H2. Corrige a mano lo que el script no resuelva (palabras partidas, listas mal detectadas).
 
 ### 3. Decidir departamentos
