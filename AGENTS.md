@@ -1,20 +1,16 @@
-# [EMPRESA] · AGENTS.md
-
-<!--
-PLANTILLA: copia este archivo como AGENTS.md en la raíz, sustituye todo lo que va entre [corchetes] y borra estos comentarios.
-AGENTS.md es la fuente común: lo leen Claude Code, Codex, Cursor y Hermes. Crea además un CLAUDE.md con una sola línea, @AGENTS.md, para que Claude Code lo importe. No uses un symlink (se rompe al clonar en Windows).
-Mantenlo corto: se carga en cada conversación. El detalle vive en los documentos y en los README.md de cada carpeta.
--->
+# [PENDIENTE: nombre de la empresa]
 
 ## Project
 
-[EMPRESA]: [qué hace y para quién, en una frase]. [Modelo de negocio y fase: bootstrap, ronda, rentable…]. [Prioridad actual: velocidad, retención, margen…].
+[PENDIENTE: qué hace la empresa y para quién, en una frase. Modelo de negocio y fase (bootstrap, ronda, rentable…). Prioridad actual (velocidad, retención, margen…).]
 
-> **Copy al cliente:** [regla que se cumple siempre en todo lo que lee el cliente (web, producto, redes, emails, guiones de venta). Ejemplo: no mencionar mercados geográficos, vocabulario obligatorio o prohibido, tratamiento de tú o de usted]. Los documentos internos de estrategia SÍ reflejan la realidad completa.
+> **Copy al cliente:** [PENDIENTE: reglas que se cumplen siempre en todo lo que lee el cliente (web, producto, redes, emails, guiones de venta): vocabulario obligatorio o prohibido, tú o usted, qué no se menciona nunca]. Los documentos internos de estrategia SÍ reflejan la realidad completa.
 
 > **Contexto completo de la empresa:** [`01-Direccion/01-resumen.md`](01-Direccion/01-resumen.md)
 
-No es un repositorio de código: es la documentación de negocio de [EMPRESA] en Markdown, un archivo por tema, agrupados por departamento. Toda la documentación está en [idioma]. Mantenla así.
+No es un repositorio de código: es la documentación de negocio de la empresa en Markdown, un archivo por tema, agrupados por departamento. Toda la documentación está en español. Mantenla así.
+
+Las secciones marcadas `[PENDIENTE]` en este archivo se rellenan cuando el brain tiene el dato: al terminar una ingesta, si el material nuevo aporta algo a Project, Principios, Convenciones o Key decisions, propón al usuario el cambio en este archivo (una línea por regla, enlazando al documento fuente). Mientras siga `[PENDIENTE]`, no supongas nada: dilo.
 
 ## Structure
 
@@ -23,18 +19,22 @@ No es un repositorio de código: es la documentación de negocio de [EMPRESA] en
 02-Finanzas/               → plan de negocio, modelo financiero, costes, supuestos y riesgos
 03-Estrategia-y-Mercado/   → mercado, competidores, tablas comparativas y fuentes
 04-Producto/
-  producto-y-planificacion/  → producto o servicio, alcance y roadmap
+  producto-y-planificacion/  → producto o servicio, alcance, roadmap y decisiones de producto
   validacion-con-clientes/   → entrevistas, hipótesis y aprendizajes
 05-Marketing/
-  estrategia-y-canales/      → estrategia, posicionamiento y canales
-  plan-mes-aaaa/             → plan de marketing de un periodo
+  estrategia-y-canales/      → estrategia, posicionamiento, canales, contenido y KPIs
+  plan-mes-aaaa/             → plan de marketing de un periodo (renombrar a plan-mes-año al crearlo)
 06-Ventas/                 → precios, embudo, guion de demo y objeciones
 07-Marca-y-Diseno/         → historia de marca, voz y tono, identidad visual
 08-Operaciones-y-Equipo/   → equipo, herramientas, rutinas y registro de decisiones
 INGESTA/                   → bandeja de entrada de material sin procesar (queda vacía tras cada ingesta)
-.claude/agents/            → agentes por departamento (_plantilla-agente.md.ejemplo para crear uno)
-.claude/skills/            → skills del proyecto (ingesta-informacion, _plantilla-skill)
+.claude/agents/            → agentes por departamento
+.claude/skills/            → skills del proyecto (ingesta-informacion)
 ```
+
+### Claude Code y otros agentes
+
+`AGENTS.md` es la única fuente de reglas: lo leen Codex, Cursor y cualquier agente compatible. `CLAUDE.md` solo contiene `@AGENTS.md` para que Claude Code lo importe. No se convierte en symlink (se rompe al clonar en Windows) ni se duplica su contenido.
 
 - Cada carpeta tiene un `README.md`: cabecera escrita a mano (qué va, qué no, fuentes) y una lista `## Contenido` que se genera sola. No se edita a mano.
 - `_plantillas/` en cada departamento: la estructura de cada tipo de documento. Antes de crear un documento, mira si hay plantilla y úsala. Las plantillas no son documentos y no salen en los índices.
@@ -42,34 +42,34 @@ INGESTA/                   → bandeja de entrada de material sin procesar (qued
 
 ## Principios
 
-Viven en [`01-Direccion/06-principios.md`](01-Direccion/06-principios.md). Aquí solo los que cambian cómo trabaja Claude:
+Viven en [`01-Direccion/06-principios.md`](01-Direccion/06-principios.md). Aquí solo los que cambian cómo trabaja el agente:
 
-1. [Principio, p. ej.: lanzar rápido e iterar con feedback real]
-2. [Principio, p. ej.: simple antes que completo]
-3. [Principio]
+1. [PENDIENTE: principio que cambia cómo se trabaja, p. ej. simple antes que completo]
+2. [PENDIENTE]
+3. [PENDIENTE]
 
 ## Agent orchestration (MANDATORY)
 
-> **CRITICAL RULE:** Eres un orquestador. Para CUALQUIER tarea de un departamento con agente,
-> DEBES delegar en ese agente con la herramienta Agent y su `subagent_type`.
+> **CRITICAL RULE:** Eres un orquestador. Para CUALQUIER tarea de un departamento,
+> DEBES delegar en su agente con la herramienta Agent y su `subagent_type`.
 > NO hagas tú el trabajo del departamento, aunque parezca sencillo: delega y luego integra.
 
 ### Enrutado por departamento
 
-El alcance y los límites de cada agente viven en su propio archivo; esta tabla solo enruta. Cuando se añada un agente a `.claude/agents/`, se añade su fila aquí. Nunca se copia su descripción.
+> **Estado:** ningún departamento tiene todavía agente propio. Todos delegan en `general-purpose` con el encargo limitado a su carpeta hasta que tengan el suyo.
+> **Al crear cada agente** en `.claude/agents/`, sustituye `general-purpose` por su `subagent_type` en la fila de su departamento y completa sus triggers. El alcance y los límites del agente viven en su propio archivo; esta tabla solo enruta y nunca copia su descripción.
 
 | Departamento | Carpeta | `subagent_type` | Triggers (delegar cuando la tarea implique) |
 |---|---|---|---|
-| **Dirección** | `01-Direccion/` | `[agente]` | [Visión, metas, propuesta de valor, público objetivo…] |
-| **Finanzas** | `02-Finanzas/` | `[agente]` | [Plan de negocio, modelo financiero, unit economics, runway, impacto financiero de una decisión…] |
-| **Estrategia y Mercado** | `03-Estrategia-y-Mercado/` | `[agente]` | [Tamaño de mercado, competidores, posicionamiento…] |
-| **Producto** | `04-Producto/` | `[agente]` | [Alcance de funcionalidades, prioridades, roadmap, entrevistas, validación…] |
-| **Marketing** | `05-Marketing/` | `[agente]` | [Estrategia de canales, contenido, calendario, plan del periodo…] |
-| **Ventas** | `06-Ventas/` | `[agente]` | [Precios, embudo, guion de demo, objeciones, prospección…] |
-| **Marca y Diseño** | `07-Marca-y-Diseno/` | `[agente]` | [Historia de marca, voz y tono, identidad visual…] |
-| **Operaciones y Equipo** | `08-Operaciones-y-Equipo/` | `[agente]` | [Equipo, herramientas, rutinas, registro de decisiones…] |
+| **Dirección** | `01-Direccion/` | `general-purpose` (limitado a la carpeta) | Visión, problema, público objetivo, propuesta de valor, diferencial, metas |
+| **Finanzas** | `02-Finanzas/` | `general-purpose` (limitado a la carpeta) | Plan de negocio, modelo financiero, supuestos, costes, unit economics, escenarios, impacto financiero de una decisión |
+| **Estrategia y Mercado** | `03-Estrategia-y-Mercado/` | `general-purpose` (limitado a la carpeta) | Tamaño de mercado, competidores, posicionamiento, research |
+| **Producto** | `04-Producto/` | `general-purpose` (limitado a la carpeta) | Producto o servicio, alcance, roadmap y backlog, especificaciones, entrevistas e hipótesis |
+| **Marketing** | `05-Marketing/` | `general-purpose` (limitado a la carpeta) | Posicionamiento, canales, plan del periodo y calendario de contenidos, contenido, SEO, KPIs de marketing |
+| **Ventas** | `06-Ventas/` | `general-purpose` (limitado a la carpeta) | Precios, embudo, prospección, demo, objeciones, cierre |
+| **Marca y Diseño** | `07-Marca-y-Diseno/` | `general-purpose` (limitado a la carpeta) | Historia de marca, logo, color, tipografía, voz y tono, taglines, assets |
+| **Operaciones y Equipo** | `08-Operaciones-y-Equipo/` | `general-purpose` (limitado a la carpeta) | Equipo, herramientas, rutinas, registro de decisiones |
 | **Ingesta** | `INGESTA/` | skill `/ingesta-informacion` | Material nuevo que hay que convertir en documentos de departamento |
-| Departamento sin agente propio | su `NN-Nombre/` | `general-purpose`, con el encargo limitado a esa carpeta | Hasta que ese departamento tenga agente |
 | Búsqueda entre departamentos (solo lectura) | varios | `Explore` | Encontrar dónde vive un dato antes de enrutar el trabajo |
 
 ### Cómo enrutar
@@ -97,6 +97,16 @@ El alcance y los límites de cada agente viven en su propio archivo; esta tabla 
 - Memoria (guardar, recordar, actualizar)
 - Conversación que no requiere trabajo de departamento
 
+## MCPs permitidos (MANDATORY)
+
+> **CRITICAL RULE:** En este proyecto solo se pueden usar los servidores MCP definidos en [`.mcp.json`](.mcp.json).
+> Cualquier otro MCP disponible en la sesión (de usuario, de plugins o conectores de claude.ai) está prohibido aquí, aunque esté conectado y aunque parezca útil.
+
+- La regla aplica a la sesión principal y a todos los agentes y skills.
+- Si una tarea necesita un MCP que no está en `.mcp.json`, no se usa: se avisa al usuario y se propone añadirlo a `.mcp.json`.
+- Añadir o quitar un MCP se hace solo editando `.mcp.json`, con confirmación del usuario. La lista vigente vive en ese archivo y no se copia aquí.
+- No cuentan como MCP externo las herramientas propias de la app de Claude Code (tareas, sesiones, vistas, navegador integrado).
+
 ## Ingesta (`/ingesta-informacion`)
 
 Usa la skill siempre que haya material nuevo en `INGESTA/`. Su `SKILL.md` es la referencia del proceso. Resumen:
@@ -107,6 +117,7 @@ Usa la skill siempre que haya material nuevo en `INGESTA/`. Su `SKILL.md` es la 
 4. Verificar que no se ha perdido texto.
 5. Regenerar los índices `README.md`.
 6. Enseñar la lista de originales que se van a borrar de `INGESTA/` y borrarlos solo con confirmación.
+7. Proponer los cambios a las secciones `[PENDIENTE]` de este `AGENTS.md` que el material nuevo permita rellenar.
 
 ## Formato de cada documento
 
@@ -125,32 +136,25 @@ Si existe plantilla para ese tipo de documento en `_plantillas/`, se sigue su es
 - **Una sola fuente por dato: la información NUNCA se duplica.** Cada dato vive en un único archivo; todo lo demás (otros documentos, agentes, skills, este AGENTS.md) enlaza a ese archivo. Si un documento nuevo repite algo ya documentado, se actualiza el existente. Si encuentras un duplicado, avisa y propón cuál se queda como fuente.
 - **Nombres:** archivos en minúsculas, sin tildes y con guiones (`NN-tema.md`). Carpetas de departamento: `NN-Nombre`. Subcarpetas: minúsculas con guiones.
 - **La ingesta conserva el texto completo:** no se resume ni se reescribe. Si un material nuevo actualiza un documento, se actualiza ese archivo con la fecha y el origen nuevos.
-- **Cifras que no cuadran:** se dejan las dos con su origen. No se reconcilian.
+- **Cifras que no cuadran:** se dejan las dos con su origen. No se reconcilian hasta que el usuario decida.
+- **Plan no es dato real:** las cifras de un plan o un presupuesto no se presentan como resultados medidos.
 - **Documentos superados:** se marcan `SUPERSEDED (fecha)` al principio y se conservan como histórico. Nunca se usan como regla vigente.
 - **`[SUPUESTO]`** marca cifras que salen de un plan o estimación, no de datos medidos.
 - **Huecos:** `[PENDIENTE: qué falta y quién lo sabe]`. Nunca se inventa para rellenar.
 - **Citar siempre:** cualquier respuesta sobre la empresa dice de qué archivo sale cada dato. Si algo no está, se dice ("no está en el brain").
-- [Convención propia: cómo se escriben los precios, vocabulario obligatorio o prohibido, género o tratamiento.]
+- **Precios:** [PENDIENTE: cómo se escriben (moneda, IVA incluido o no, por mercado)].
+- **Vocabulario:** [PENDIENTE: términos obligatorios y prohibidos en copy al cliente].
 
 ## Qué NO entra en el brain
 
-- Datos de contacto de clientes o prospectos (teléfonos, emails, perfiles personales). Viven en [CRM].
+- Datos de contacto de clientes o prospectos (teléfonos, emails, perfiles personales). Viven en [PENDIENTE: CRM o herramienta].
 - Contraseñas, claves de API, credenciales e identificadores internos.
-- [Datos personales del equipo, nóminas, documentación legal sensible… lo que decida la empresa.]
+- Datos personales del equipo y de los clientes, y documentación legal sensible.
 
 El contenido es interno y confidencial: no se sube a servicios externos.
 
-## MCP (acceso restringido)
-
-> **CRITICAL:** Solo usar las herramientas MCP definidas en `.mcp.json` de este proyecto.
-> NO usar MCPs globales ni de cuenta. Si una tarea requiere un MCP que no está en `.mcp.json`, avisar al usuario en lugar de usarlo.
-
-<!-- Si la empresa no usa MCPs, borra esta sección. -->
-
 ## Key decisions
 
-Decisiones vigentes que afectan a cualquier tarea. El histórico completo (fecha, contexto, alternativas) vive en [`08-Operaciones-y-Equipo/registro-de-decisiones.md`](08-Operaciones-y-Equipo/registro-de-decisiones.md); aquí solo la regla, una línea cada una.
+Decisiones vigentes que afectan a cualquier tarea. El detalle (motivo y fecha) vive en [`08-Operaciones-y-Equipo/registro-de-decisiones.md`](08-Operaciones-y-Equipo/registro-de-decisiones.md); aquí solo la regla, una línea cada una.
 
-- [Decisión, p. ej.: precio único sin tiers hasta validar X]
-- [Decisión, p. ej.: canal principal de venta]
-- [Decisión]
+- [PENDIENTE: primera decisión vigente, p. ej. precio, canal principal o mercado]

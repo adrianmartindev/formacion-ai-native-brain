@@ -1,8 +1,15 @@
-# [EMPRESA] · Company brain
+# Company brain
 
-Documentación de negocio de [EMPRESA] organizada por departamento, en Markdown y con un archivo por sección. Los documentos nuevos se dejan en `INGESTA/` y se ordenan con la skill `/ingesta-informacion`.
+La documentación de negocio de la empresa en Markdown, organizada por departamento y con un archivo por tema. Es la memoria compartida del equipo y de sus agentes: Claude Code, Codex o Cursor la leen antes de trabajar y citan de qué archivo sale cada dato.
 
-Cómo empezar a partir de esta plantilla: [COMO-USAR-ESTA-PLANTILLA.md](COMO-USAR-ESTA-PLANTILLA.md).
+## Cómo funciona
+
+- **Entra información:** el material nuevo (PDF, presentaciones, notas, exportaciones) se deja en `INGESTA/` y se procesa con `/ingesta-informacion`. La skill lo convierte a Markdown, lo reparte por departamento sin resumirlo y regenera los índices.
+- **Se guarda ordenado:** cada departamento tiene su carpeta `NN-Nombre/`, un `README.md` con qué va y qué no, y `_plantillas/` con la estructura de cada tipo de documento. Un dato vive en un solo archivo; el resto enlaza a él.
+- **Se consulta:** se pregunta en lenguaje natural desde la terminal. El agente responde citando el archivo de origen y, si el dato no está, lo dice.
+- **Se mantiene:** los documentos superados se marcan `SUPERSEDED`, las cifras que no cuadran se dejan con su origen y los huecos se marcan `[PENDIENTE]`. Git guarda cada cambio, así que todo se puede revisar y deshacer.
+
+Las reglas que siguen los agentes están en [`AGENTS.md`](AGENTS.md). `CLAUDE.md` solo lo importa para Claude Code.
 
 ## Índice
 
